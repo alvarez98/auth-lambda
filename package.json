@@ -1,0 +1,40 @@
+{
+  "name": "oauth-ts",
+  "version": "1.0.0",
+  "description": "Serverless webpack example using Typescript",
+  "main": "handler.js",
+  "scripts": {
+    "start": "ts-node ./tests/auth.test.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "@types/bcrypt": "^3.0.0",
+    "aws-sdk": "^2.770.0",
+    "bcrypt": "^5.0.0",
+    "joi-extract-type": "^15.0.8",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "pg": "^8.4.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5",
+    "sequelize-auto": "^0.6.3",
+    "source-map-support": "^0.5.10",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.17",
+    "@types/node": "^10.12.18",
+    "@types/sequelize": "^4.28.9",
+    "@types/serverless": "^1.72.5",
+    "fork-ts-checker-webpack-plugin": "^3.0.1",
+    "serverless-webpack": "^5.2.0",
+    "ts-loader": "^5.3.3",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.2.4",
+    "webpack": "^4.29.0",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "license": "MIT"
+}
