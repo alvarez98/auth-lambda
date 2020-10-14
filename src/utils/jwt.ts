@@ -9,7 +9,7 @@ const { SECRET } = process.env
  * @return {String} retorna un token
 */
 const generateToken = ({ duration }) => ({ data }) => {
-    const payload = { ...data }
+    const payload = data ? data : {}
     if(duration) payload.exp = Math.floor((Date.now() / 1000) + (duration * 60))
     return { data, token: jwt.sign(payload, SECRET) }
 }

@@ -16,7 +16,7 @@ const saveSession = async ({ data, token }) => {
     }
     const res = await dynamoDBGetAsync(params).catch(error => error)
     if (res instanceof Error) throw new HttpError()
-    return { data }
+    return { data: null }
 }
 
 
