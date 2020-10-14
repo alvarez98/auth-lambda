@@ -13,8 +13,10 @@ const saveSession = async ({ data, token }) => {
             SID: uuid,
             SToken: token,
             SDate: moment().format('DD.MM.YYYY HH:mm'),
-            SIDUser: data.WUserID,
-
+            SUserID: data.WUserID,
+            SUserLastName: data.WUserLastName,
+            SUserFirstName: data.WUserFirstName,
+            SUserEmail: data.WUserEmail
         }
     }
     const res = await dynamoDBGetAsync(params).catch(error => error)
