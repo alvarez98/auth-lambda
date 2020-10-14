@@ -22,9 +22,8 @@ export const auth = async (event, _context) => {
     validateData('auth'),
     findUser,
     matchPassword,
-    generateToken({ duration: null }),
+    generateToken({ duration: 15, encryptData: false }),
     saveSession,
-    generateToken({ duration: 15 }),
     sendSuccessResponse(Res)
   )(JSON.parse(event.body))
     .then(res => res)

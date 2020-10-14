@@ -8,10 +8,10 @@ const { SECRET } = process.env
  * @param {Object} time Contiene el tiempo de expiración del token.
  * @return {String} retorna un token
 */
-const generateToken = ({ duration }) => ({ data }) => {
-    const payload = data ? data : {}
+const generateToken = ({ duration, encryptData }) => (args) => {
+    const payload = args.data && encryptData ? args.data : {}
     if(duration) payload.exp = Math.floor((Date.now() / 1000) + (duration * 60))
-    return { data, token: jwt.sign(payload, SECRET) }
+    return { ...args, token: jwt.sign(payload, SECRET) }
 }
 
 export default generateToken

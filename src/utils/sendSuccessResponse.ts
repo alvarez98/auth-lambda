@@ -5,6 +5,6 @@ import Response from "../classes/response";
  * @param Res 
  * @return {Function} param {Object} {token}
  */
-const sendSuccessResponse = (Res:Response) => ({ token }) => Res.success({ access: token })
+const sendSuccessResponse = (Res:Response) => ({ token, session }) => Res.success({ session, access: token })
 
 export default sendSuccessResponse

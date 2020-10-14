@@ -6,18 +6,20 @@ import HttpError from '../../classes/httpError';
 const dynamoDBGetAsync = promisify(docClient.put).bind(docClient)
 
 const saveSession = async ({ data, token }) => {
+    const uuid = uuidv4()
     const params = {
         TableName: 'Sessions',
         Item: {
-            SID: uuidv4(),
+            SID: uuid,
             SToken: token,
-            SDate: moment().format('DD.MM.YYYY HH:mm')
+            SDate: moment().format('DD.MM.YYYY HH:mm'),
+            SIDUser: data.WUserID,
+
         }
     }
     const res = await dynamoDBGetAsync(params).catch(error => error)
     if (res instanceof Error) throw new HttpError()
-    return { data: null }
+    return { session: uuid, token }
 }
-
 
 export default saveSession

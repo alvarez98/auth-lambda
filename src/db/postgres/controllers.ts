@@ -9,7 +9,7 @@ const findUser = async (body) => {
             Inactive: { [Op.eq]: 0 },
             Cancelled: { [Op.eq]: 0 }
         },
-        attributes: ['WUserID', 'WUserEmail', 'WUserFullName', 'WUserFirstName', 'WUserLastName', 'WUserPassword']
+        attributes: ['WUserID', 'WUserEmail', 'WUserFirstName', 'WUserLastName', 'WUserPassword']
     }).catch(error => error)
     if (user instanceof Error) throw new HttpError()
     else if(user === null) throw new HttpError(401, 'Invalid credentials')
