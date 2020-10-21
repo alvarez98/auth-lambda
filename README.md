@@ -35,7 +35,11 @@ $ npm i
 
 Run tests:
 ```sh
-$ npm start
+$ npm run test-session
+$ npm run test-auth
+$ npm run test-password
+$ npm run test-email
+$ npm run test-user
 ```
 
 Deploy lambdas in AWS:

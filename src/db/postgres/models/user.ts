@@ -37,5 +37,5 @@ export function UserFactory (sequelize: Sequelize): UserStatic {
             type: DataTypes.STRING,
             allowNull: false
         }
-    });
+    }, { timestamps: false });
 }

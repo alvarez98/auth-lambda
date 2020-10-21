@@ -4,8 +4,12 @@
   "description": "Serverless webpack example using Typescript",
   "main": "handler.js",
   "scripts": {
-    "start": "ts-node ./tests/auth.test.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node ./src/db/postgres/controllers.ts",
+    "test-session": "ts-node ./tests/session.test.ts",
+    "test-auth": "ts-node ./tests/auth.test.ts",
+    "test-password": "ts-node ./tests/password.test.ts",
+    "test-email": "ts-node ./tests/email.test.ts",
+    "test-user": "ts-node ./tests/user.test.ts"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",

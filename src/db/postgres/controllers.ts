@@ -2,7 +2,7 @@ import { Op } from "sequelize";
 import { Users } from './models/'
 import HttpError from "../../classes/httpError";
 
-const findUser = async (body) => {
+export const findUser = async (body) => {
     const user = await Users.findOne({
         where: {
             WUserEmail: { [Op.eq]: body.email },
@@ -16,4 +16,13 @@ const findUser = async (body) => {
     return { body, user }
 }
 
-export default findUser
+export const updateInDB = async (data) => {
+    const user = await Users.update(data.body, { 
+        where: {
+            WUserID: data.pathParameters.id
+        }
+    }).catch(error => error)
+    if (user instanceof Error) throw new HttpError()
+    if(user[0]===0) throw new HttpError(404, 'User not found')
+    return { message: 'Updated' }
+}
