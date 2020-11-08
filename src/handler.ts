@@ -9,7 +9,7 @@ import {saveSession, getTokenInDB} from './db/dynamo/controllers';
 import HttpError from './classes/httpError';
 import pipe from './utils/pipe'
 import sendSuccessResponse from './utils/sendSuccessResponse';
-import validateApiKey from './utils/validateApiKey';
+import verifyCredentials from './utils/verifyCredentials';
 import { encryptPassword } from './utils/bcrypt';
 
 /**
@@ -55,7 +55,7 @@ export const home: APIGatewayProxyHandler = async (event, _context) => {
 export const getTokenBySessionID = async (event, _context) => {
   const Res = new Response()
   return pipe(
-    validateApiKey({ returns: ['pathParameters'] }),
+    verifyCredentials({ returns: ['pathParameters'] }),
     validateData('uuid'),
     getTokenInDB,
     sendSuccessResponse(Res)
@@ -78,7 +78,7 @@ export const updatePassword = async (event, _context) => {
   event.body = JSON.parse(event.body)
   const Res = new Response()
   return pipe(
-    validateApiKey({ returns: ['pathParameters', 'body']}),
+    verifyCredentials({ returns: ['pathParameters', 'body']}),
     validateMultipleData(['id', 'password']),
     encryptPassword,
     updateInDB,
@@ -102,7 +102,7 @@ export const updateEmail = async (event, _context) => {
   event.body = JSON.parse(event.body)
   const Res = new Response()
   return pipe(
-    validateApiKey({ returns: ['pathParameters', 'body']}),
+    verifyCredentials({ returns: ['pathParameters', 'body']}),
     validateMultipleData(['id', 'email']),
     updateInDB,
     sendSuccessResponse(Res)
@@ -125,7 +125,7 @@ export const updateUser = async (event, _context) => {
   event.body = JSON.parse(event.body)
   const Res = new Response()
   return pipe(
-    validateApiKey({ returns: ['pathParameters', 'body']}),
+    verifyCredentials({ returns: ['pathParameters', 'body']}),
     validateMultipleData(['id', 'user']),
     updateInDB,
     sendSuccessResponse(Res)

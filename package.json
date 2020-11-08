@@ -4,7 +4,7 @@
   "description": "Serverless webpack example using Typescript",
   "main": "handler.js",
   "scripts": {
-    "start": "ts-node ./src/db/postgres/controllers.ts",
+    "start": "ts-node ./src/services/sendNotifications.ts",
     "test-session": "ts-node ./tests/session.test.ts",
     "test-auth": "ts-node ./tests/auth.test.ts",
     "test-password": "ts-node ./tests/password.test.ts",

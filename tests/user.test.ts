@@ -13,7 +13,7 @@ const dummyData = [
 
 const dummyEvent = {
     headers: {
-        "Authorization": "Bearer api_key"
+        "Authorization": "Bearer a7sf7g33vv7v3"
     },
     pathParameters: {},
     body: ""
