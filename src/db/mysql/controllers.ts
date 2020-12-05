@@ -1,5 +1,5 @@
 import { Op } from "sequelize";
-import { Users, ApiKeys } from './models/'
+import { Users, ApiKeys } from './models'
 import HttpError from "../../classes/httpError";
 import * as moment from "moment";
 
@@ -18,13 +18,11 @@ export const findUser = async (body) => {
 }
 
 export const updateInDB = async (data) => {
-    const user = await Users.update(data.body, { 
-        where: {
-            WUserID: data.pathParameters.id
-        }
-    }).catch(error => error)
+    let user = await Users.findByPk(data.pathParameters.id).catch(error => error)
     if (user instanceof Error) throw new HttpError()
-    if(user[0]===0) throw new HttpError(404, 'User not found')
+    if (!user) throw new HttpError(404, 'User not found')
+    user = await user.update({ OwnerId: data.body }).catch(error => error)
+    if (user instanceof Error) throw new HttpError()
     return { message: 'Updated' }
 }
 

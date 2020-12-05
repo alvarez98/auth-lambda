@@ -2,7 +2,7 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
 import Response from "./classes/response"
 import {validateData, validateMultipleData} from './utils/validateData';
-import {findUser, updateInDB} from './db/postgres/controllers';
+import {findUser, updateInDB} from './db/mysql/controllers';
 import matchPassword from './utils/matchPassword';
 import generateToken from './utils/jwt';
 import {saveSession, getTokenInDB} from './db/dynamo/controllers';

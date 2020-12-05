@@ -8,7 +8,7 @@ export const dbConfig = new sequelize.Sequelize(
     {
         port: Number(DB_PG_PORT) || 5432,
         host: DB_PG_HOST,
-        dialect: 'postgres',
+        dialect: 'mysql',
         dialectOptions: {
         },
         pool: { max: 5 }

@@ -1,6 +1,6 @@
 import HttpError from "../classes/httpError"
 import getFields from "./getFields"
-import { validateApiKey } from "../db/postgres/controllers"
+import { validateApiKey } from "../db/mysql/controllers"
 
 /**
  * @function verifyCredentials
