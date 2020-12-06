@@ -1,0 +1,62 @@
+service: oauth-js
+frameworkVersion: '2'
+provider: 
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+  apiGateway: 
+    minimumCompressionSize: 1024
+  environment: 
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    DB_MYSQL: users
+    DB_MYSQL_USER: belieff
+    DB_MYSQL_PASS: "E%(3tM71(q?nW$m=;K|lEI=2BgG{J9C&"
+    DB_MYSQL_HOST: ls-e5ac94e28e778f4e3cb14252fb99d7b850d9269e.cuwgc9pn5ma2.us-east-1.rds.amazonaws.com
+    DB_MYSQL_PORT: 3306
+    SECRET: belieff2020!
+    DB_DY_REGION: us-east-1
+    DB_DY_HOST: dynamodb.us-east-1.amazonaws.com
+functions: 
+  home: 
+    handler: ./src/handler.home
+    events: 
+      - http: 
+          method: get
+          path: home
+  auth: 
+    handler: ./src/handler.auth
+    events: 
+    - http: 
+        method: post
+        path: auth
+  session: 
+    handler: ./src/handler.getTokenBySessionID
+    events: 
+    - http: 
+        method: get
+        path: sessions/{uuid}
+  updatePassword: 
+    handler: ./src/handler.updatePassword
+    events: 
+    - http: 
+        method: put
+        path: users/{id}/password
+  updateEmail: 
+    handler: ./src/handler.updateEmail
+    events: 
+    - http: 
+        method: put
+        path: users/{id}/email
+  updateUser: 
+    handler: ./src/handler.updateUser
+    events: 
+    - http: 
+        method: put
+        path: users/{id}
+  addUser: 
+    handler: ./src/handler.addUser
+    events: 
+    - http: 
+        method: post
+        path: users
