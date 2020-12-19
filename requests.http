@@ -1,0 +1,59 @@
+### Auth
+POST https://j9dboohkf6.execute-api.us-east-1.amazonaws.com/dev/auth
+Content-Type: application/json
+
+{
+    "email": "aeap@gmail.com",
+    "password": "1998aeap1998"
+}
+
+### Home
+GET https://j9dboohkf6.execute-api.us-east-1.amazonaws.com/dev/home
+
+### Session
+GET https://j9dboohkf6.execute-api.us-east-1.amazonaws.com/dev/sessions/ed2a483c-3225-497d-af7c-4482eb2ed4d6
+Content-Type: application/json
+Authorization: Bearer =f34rdsfw4ffsd5
+
+### Update Password
+PUT https://j9dboohkf6.execute-api.us-east-1.amazonaws.com/dev/users/1/password
+Content-Type: application/json
+Authorization: Bearer =f34rdsfw4ffsd5
+
+{
+    "WUserPassword": "aeap1998"
+}
+
+### Update Email
+PUT https://j9dboohkf6.execute-api.us-east-1.amazonaws.com/dev/users/1/email
+Content-Type: application/json
+Authorization: Bearer =f34rdsfw4ffsd5
+
+{
+    "WUserEmail": "aeap1999@gmail.com"
+}
+### Update User
+PUT https://j9dboohkf6.execute-api.us-east-1.amazonaws.com/dev/users/1
+Content-Type: application/json
+Authorization: Bearer =f34rdsfw4ffsd5
+
+{
+    "WUserLastName": "Alvarez",
+    "WUserFirstName": "Esteban",
+    "WUserFullName": "Esteban Alvarez"
+}
+
+### Add User
+POST https://j9dboohkf6.execute-api.us-east-1.amazonaws.com/dev/users
+Content-Type: application/json
+Authorization: Bearer =f34rdsfw4ffsd5
+
+{
+    "WUserLastName": "Pacheco",
+    "WUserFirstName": "Adolfo",
+    "WUserFullName": "Adolfo Pacheco",
+    "WUserPassword": "12345678",
+    "WUserEmail": "email@gmail.com",
+    "Inactive":0,
+    "Cancelled":0
+}
