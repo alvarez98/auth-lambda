@@ -1,6 +1,6 @@
-import * as Joi from '@hapi/joi'
+const Joi = require('@hapi/joi')
 
-export const user = Joi.object({
+module.exports.user = Joi.object({
     WUserLastName: Joi.string(),
     WUserFirstName: Joi.string(),
     WUserFullName: Joi.string()

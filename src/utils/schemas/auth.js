@@ -1,6 +1,6 @@
-import * as Joi from '@hapi/joi'
+const Joi = require('@hapi/joi')
 
-export const auth = Joi.object({
+module.exports.auth = Joi.object({
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
 })

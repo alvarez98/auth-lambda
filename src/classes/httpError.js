@@ -1,7 +1,7 @@
 class HttpError extends Error {
-    message:string
-    code:number
-    constructor(code = 500, message = 'Internal server error', ...params) {
+    message = 'Internal server error'
+    code = 500
+    constructor(code, message, ...params) {
       super(...params)
       if (Error.captureStackTrace) {
         Error.captureStackTrace(this, HttpError)
@@ -12,4 +12,4 @@ class HttpError extends Error {
     }
 }
 
-export default HttpError
+module.exports = HttpError

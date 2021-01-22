@@ -8,4 +8,4 @@
  */
 const pipe = (...functions) => arg => functions.reduce((currentArg, fn) => currentArg.then(fn), Promise.resolve(arg));
 
-export default pipe
+module.exports = pipe

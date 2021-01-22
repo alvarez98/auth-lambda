@@ -10,7 +10,4 @@ jspm_packages
 
 # Files
 .env
-serverless.ts
-script.sql
-requests.http
 .vscode

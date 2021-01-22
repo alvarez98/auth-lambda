@@ -1,4 +1,4 @@
-import { auth } from "../src/handler"
+const { auth } = require("../src/handler")
 
 const dummyBodies = [
     JSON.stringify({

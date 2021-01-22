@@ -1,4 +1,4 @@
-import * as AWS from 'aws-sdk'
+const AWS = require('aws-sdk')
 
 const { DB_DY_HOST, DB_DY_REGION } = process.env
 let docClient = new AWS.DynamoDB.DocumentClient( {
@@ -7,4 +7,4 @@ let docClient = new AWS.DynamoDB.DocumentClient( {
     region: DB_DY_REGION
 });
 
-export default docClient
+module.exports = docClient

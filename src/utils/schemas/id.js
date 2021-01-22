@@ -1,9 +1,9 @@
-import * as Joi from '@hapi/joi'
+const Joi = require('@hapi/joi')
 
-export const uuid = Joi.object({
+module.exports.uuid = Joi.object({
     uuid: Joi.string().guid({ version: ['uuidv4'] }).required()
 })
 
-export const id = Joi.object({
+module.exports.id = Joi.object({
     id: Joi.number().integer().required()
 })
