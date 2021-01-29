@@ -19,8 +19,9 @@ module.exports.auth = async event => {
     const body = JSON.parse(event.body)
     validateApiKey(event)
     validateData('auth', body)
-    const { WUserPassword, ...user } = (await findUser(body)).dataValues
-    if (!user) return Res.error(401, 'Invalid credentials')
+    const data = await findUser(body)
+    if (!data) return Res.error(401, 'Invalid credentials')
+    const { WUserPassword, ...user } = data.dataValues
     const match = await matchPassword(WUserPassword, body.password)
     if (!match) return Res.error(401, 'Invalid credentials')
     const access_token = generateToken(15, user)

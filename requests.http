@@ -1,5 +1,6 @@
 @baseUrl = https://4a7pbh4vw9.execute-api.us-east-1.amazonaws.com/dev/
 @apiKey = 'Bearer =a7sf7g33vv7v3'
+
 ### GET home
 GET {{baseUrl}}
 
@@ -15,6 +16,7 @@ Content-Type: application/json
 
 ### PUT update password
 PUT {{baseUrl}}/user/9/password
+Authorization: {{apiKey}}
 Content-Type: application/json
 
 {
@@ -27,7 +29,7 @@ Authorization: {{apiKey}}
 Content-Type: application/json
 
 {
-    "WUserEmail": "test@belieff.com"
+    "WUserEmail": "test@gmail.com"
 }
 
 ### PUT update user

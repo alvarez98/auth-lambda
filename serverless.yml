@@ -1,5 +1,8 @@
 service: oauth-js
 frameworkVersion: '2'
+useDotenv: true
+plugins:
+  - serverless-dotenv-plugin
 provider:
   name: aws
   runtime: nodejs12.x
@@ -15,62 +18,69 @@ functions:
           cors: true
           path: /
   auth:
-      environment:
-        DB_PG: users
-        DB_PG_USER: belieff
-        DB_PG_PASS: "E%(3tM71(q?nW$m=;K|lEI=2BgG{J9C&"
-        DB_PG_HOST: ls-e5ac94e28e778f4e3cb14252fb99d7b850d9269e.cuwgc9pn5ma2.us-east-1.rds.amazonaws.com
-        DB_PG_PORT: 3306
-        JWT_SECRET: belieff2020!
-        ROUNDS_BCRYPT: 10
-        DB_DY_REGION: us-east-1
-        DB_DY_HOST: dynamodb.us-east-1.amazonaws.com
-      handler: src/handler.auth
-      events:
-        - http:
-            method: post
-            cors: true
-            path: auth
+    environment:
+      DB_PG: ${env:DB_PG}
+      DB_PG_USER: ${env:DB_PG_USER}
+      DB_PG_PASS: ${env:DB_PG_PASS}
+      DB_PG_HOST: ${env:DB_PG_HOST}
+      DB_PG_PORT: ${env:DB_PG_PORT}
+      JWT_SECRET: ${env:JWT_SECRET}
+      ROUNDS_BCRYPT: ${env:ROUNDS_BCRYPT}
+      DB_DY_REGION: ${env:DB_DY_REGION}
+      DB_DY_HOST: ${env:DB_DY_HOST}
+    handler: src/handler.auth
+    events:
+      - http:
+          method: post
+          cors: true
+          path: auth
 
   updatePassword:
-      environment:
-        DB_PG: users
-        DB_PG_USER: belieff
-        DB_PG_PASS: "E%(3tM71(q?nW$m=;K|lEI=2BgG{J9C&"
-        DB_PG_HOST: ls-e5ac94e28e778f4e3cb14252fb99d7b850d9269e.cuwgc9pn5ma2.us-east-1.rds.amazonaws.com
-        DB_PG_PORT: 3306
-        ROUNDS_BCRYPT: 10
-      handler: src/handler.updatePassword
-      events:
-        - http:
-            method: put
-            cors: true
-            path: user/{id}/password
+    environment:
+      DB_PG: ${env:DB_PG}
+      DB_PG_USER: ${env:DB_PG_USER}
+      DB_PG_PASS: "E%(3tM71(q?nW$m=;K|lEI=2BgG{J9C&"
+      DB_PG_HOST: ${env:DB_PG_HOST}
+      DB_PG_PORT: ${env:DB_PG_PORT}
+      ROUNDS_BCRYPT: ${env:ROUNDS_BCRYPT}
+    handler: src/handler.updatePassword
+    events:
+      - http:
+          method: put
+          cors: true
+          path: user/{id}/password
 
   updateEmail:
-      environment:
-        DB_PG: users
-        DB_PG_USER: belieff
-        DB_PG_PASS: "E%(3tM71(q?nW$m=;K|lEI=2BgG{J9C&"
-        DB_PG_HOST: ls-e5ac94e28e778f4e3cb14252fb99d7b850d9269e.cuwgc9pn5ma2.us-east-1.rds.amazonaws.com
-        DB_PG_PORT: 3306
-      handler: src/handler.updateEmail
-      events:
-        - http:
-            method: put
-            cors: true
-            path: user/{id}/email
+    environment:
+      DB_PG: ${env:DB_PG}
+      DB_PG_USER: ${env:DB_PG_USER}
+      DB_PG_PASS: ${env:DB_PG_PASS}
+      DB_PG_HOST: ${env:DB_PG_HOST}
+      DB_PG_PORT: ${env:DB_PG_PORT}
+    handler: src/handler.updateEmail
+    events:
+      - http:
+          method: put
+          cors: true
+          path: user/{id}/email
   
   updateUser:
-      environment:
-        DB_PG: users
-        DB_PG_USER: belieff
-        DB_PG_PASS: "E%(3tM71(q?nW$m=;K|lEI=2BgG{J9C&"
-        DB_PG_HOST: ls-e5ac94e28e778f4e3cb14252fb99d7b850d9269e.cuwgc9pn5ma2.us-east-1.rds.amazonaws.com
-        DB_PG_PORT: 3306
-      handler: src/handler.updateUser
-      events:
-        - http:
-            method: put
-            cors: true
-            path: user/{id}           
+    environment:
+      DB_PG: ${env:DB_PG}
+      DB_PG_USER: ${env:DB_PG_USER}
+      DB_PG_PASS: ${env:DB_PG_PASS}
+      DB_PG_HOST: ${env:DB_PG_HOST}
+      DB_PG_PORT: ${env:DB_PG_PORT}
+    handler: src/handler.updateUser
+    events:
+      - http:
+          method: put
+          cors: true
+          path: user/{id}
+
+custom:
+  dotenv:
+    path: ./.env
+    exclude:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
