@@ -39,7 +39,7 @@ functions:
     environment:
       DB_PG: ${env:DB_PG}
       DB_PG_USER: ${env:DB_PG_USER}
-      DB_PG_PASS: "E%(3tM71(q?nW$m=;K|lEI=2BgG{J9C&"
+      DB_PG_PASS: ${env:DB_PG_PASS}
       DB_PG_HOST: ${env:DB_PG_HOST}
       DB_PG_PORT: ${env:DB_PG_PORT}
       ROUNDS_BCRYPT: ${env:ROUNDS_BCRYPT}
